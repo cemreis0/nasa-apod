@@ -14,7 +14,6 @@ const GetApodDate = () => {
         setLoader(true)
         const {data: response} = await axios.get(`http://localhost:8000/getapod/${date}`)
         setData(JSON.parse(response[0]))
-        console.log(response)
       } catch (error) {
         console.log(error.message)
       }
@@ -23,24 +22,19 @@ const GetApodDate = () => {
     fetchData(date)
   }, [date])
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-  }
-
   const handleChange = (e) => {
     setDate(e.target.value)
   }
 
   return (
     <div className="container" style={{ textAlign: "center", marginTop: "10px" }}>
-      <form onSubmit={handleSubmit}>
-        <input type="date" onChange={handleChange} defaultValue={date} />
-        <button type="submit">Get Astronomy Picture of the Day</button>
+      <form>
+        <input type="date" defaultValue={date} onChange={handleChange} />
       </form>
       {loader &&
         (
-          <div style={{ textAlign: "center" }}>
-            <h3>Loading...</h3>
+          <div style={{ textAlign: "center", marginTop: "10px" }}>
+            <h3>Getting Astronomy Picture of the Day...</h3>
           </div>
         )
       }
