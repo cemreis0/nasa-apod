@@ -1,9 +1,4 @@
-@media only screen and (max-width: 768px) {
-  .container {
-    padding: 1px !important;
-  }
-}
-
-.container {
-  padding-inline: 10%;
+* {
+  margin: 0;
+  padding: 0;
 }
